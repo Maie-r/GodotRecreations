@@ -1,0 +1,64 @@
+[gd_scene load_steps=9 format=3 uid="uid://dag68aukhwh6o"]
+
+[ext_resource type="Script" uid="uid://b8kaaffgpl185" path="res://BulletHell/scripts/SceneScripts/RoamingProjectile.cs" id="1_1rn53"]
+[ext_resource type="Texture2D" uid="uid://bvufc60yxx0kk" path="res://BulletHell/assets/sun.png" id="1_v4byf"]
+[ext_resource type="Shader" uid="uid://cunppnempbgqq" path="res://BulletHell/scripts/SceneScripts/RoamingProjectile.gdshader" id="2_rlw1p"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bacpg"]
+shader = ExtResource("2_rlw1p")
+shader_parameter/Colorize = Color(1, 1, 1, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pybx4"]
+radius = 26.1725
+
+[sub_resource type="Curve" id="Curve_xaqb2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_lgh4k"]
+curve = SubResource("Curve_xaqb2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_553pl"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 0.01
+angle_max = 360.0
+spread = 180.0
+initial_velocity_min = 89.89
+initial_velocity_max = 89.89
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 60.67
+linear_accel_max = 60.67
+scale_min = 5.0
+scale_max = 20.0
+scale_curve = SubResource("CurveTexture_lgh4k")
+color = Color(1, 0.756863, 0.384314, 1)
+hue_variation_min = -0.04
+hue_variation_max = 0.09
+
+[node name="RoamingProjectile" type="Area2D"]
+collision_layer = 4
+collision_mask = 10
+script = ExtResource("1_1rn53")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 1
+material = SubResource("ShaderMaterial_bacpg")
+scale = Vector2(0.142574, 0.142574)
+texture = ExtResource("1_v4byf")
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+z_index = 1
+shape = SubResource("CircleShape2D_pybx4")
+
+[node name="DeathExplosion" type="GPUParticles2D" parent="."]
+emitting = false
+one_shot = true
+explosiveness = 0.79
+fixed_fps = 60
+visibility_rect = Rect2(-100.355, -100, 200, 200)
+process_material = SubResource("ParticleProcessMaterial_553pl")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="finished" from="DeathExplosion" to="." method="_on_death_explosion_finished"]

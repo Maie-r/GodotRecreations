@@ -1,0 +1,201 @@
+[gd_scene load_steps=3 format=3 uid="uid://cthxmqm7vllqn"]
+
+[ext_resource type="Texture2D" uid="uid://cb6qaf20e3n7v" path="res://BulletHell/assets/demoman.jpg" id="1_hag6a"]
+[ext_resource type="Script" uid="uid://bhpf31w1oq6d3" path="res://BulletHell/scripts/SceneScripts/UI.cs" id="1_tk4k2"]
+
+[node name="UI" type="CanvasLayer" groups=["UI"]]
+script = ExtResource("1_tk4k2")
+
+[node name="Margin1" type="MarginContainer" parent="."]
+offset_top = 553.0
+offset_right = 10.0
+offset_bottom = 648.0
+size_flags_vertical = 8
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_bottom = 95
+
+[node name="Buffs" type="HBoxContainer" parent="Margin1"]
+layout_mode = 2
+theme_override_constants/separation = 55
+
+[node name="Control" type="Control" parent="Margin1/Buffs"]
+layout_mode = 2
+
+[node name="Buff" type="Label" parent="Margin1/Buffs/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "ATK"
+
+[node name="Count" type="Label" parent="Margin1/Buffs/Control"]
+layout_mode = 0
+offset_left = 32.5
+offset_top = 9.0
+offset_right = 72.5
+offset_bottom = 32.0
+text = "2
+"
+
+[node name="Control2" type="Control" parent="Margin1/Buffs"]
+layout_mode = 2
+
+[node name="Buff" type="Label" parent="Margin1/Buffs/Control2"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 5
+text = "ATK"
+
+[node name="Count" type="Label" parent="Margin1/Buffs/Control2"]
+layout_mode = 0
+offset_left = 32.5
+offset_top = 9.0
+offset_right = 72.5
+offset_bottom = 32.0
+text = "2
+"
+
+[node name="Score" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -18.5
+offset_right = 18.5
+offset_bottom = 23.0
+grow_horizontal = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_colors/font_shadow_color = Color(0, 0, 1, 1)
+theme_override_colors/font_outline_color = Color(0.0156863, 0.247059, 1, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/outline_size = 0
+theme_override_font_sizes/font_size = 51
+text = "0"
+
+[node name="Lives" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(20, 20)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -61.13
+offset_right = 184.0
+offset_bottom = 122.87
+grow_vertical = 0
+scale = Vector2(0.295, 0.295)
+theme_override_constants/separation = 25
+
+[node name="TextureRect" type="TextureRect" parent="Lives"]
+layout_mode = 2
+texture = ExtResource("1_hag6a")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="TextureRect2" type="TextureRect" parent="Lives"]
+layout_mode = 2
+texture = ExtResource("1_hag6a")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="TextureRect3" type="TextureRect" parent="Lives"]
+layout_mode = 2
+texture = ExtResource("1_hag6a")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="TextureRect4" type="TextureRect" parent="Lives"]
+layout_mode = 2
+texture = ExtResource("1_hag6a")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="TextureRect5" type="TextureRect" parent="Lives"]
+layout_mode = 2
+texture = ExtResource("1_hag6a")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="GameOver" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="GameOver"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.423529)
+
+[node name="HBoxContainer" type="VBoxContainer" parent="GameOver"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -25.0
+offset_right = 46.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOver" type="Label" parent="GameOver/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 51
+text = "Game Over!"
+
+[node name="PB" type="Label" parent="GameOver/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 36
+text = "Personal Best: 0"
+
+[node name="MarginContainer" type="MarginContainer" parent="GameOver"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -239.0
+offset_top = -57.0
+offset_right = 239.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 40
+
+[node name="Label" type="Label" parent="GameOver/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 8
+theme_override_constants/shadow_outline_size = 10
+theme_override_font_sizes/font_size = 41
+text = "Press Space to Respawn"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

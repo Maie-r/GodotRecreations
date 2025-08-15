@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://c2ogge6r5eejm"]
+
+[ext_resource type="Shader" uid="uid://cunppnempbgqq" path="res://BulletHell/scripts/SceneScripts/RoamingProjectile.gdshader" id="1_6rkd2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rdq66"]
+shader = ExtResource("1_6rkd2")
+shader_parameter/Colorize = Color(1, 0.0588235, 0.0470588, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wc67q"]
+lifetime_randomness = 0.11
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 3.21
+spread = 180.0
+initial_velocity_max = 164.85
+gravity = Vector3(0, 98, 0)
+scale_min = 0.0
+scale_max = 23.47
+color = Color(1, 0, 0, 1)
+hue_variation_min = -0.04
+hue_variation_max = 0.11
+turbulence_enabled = true
+
+[node name="CritEffect" type="Node2D"]
+material = SubResource("ShaderMaterial_rdq66")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 18
+lifetime = 0.6
+speed_scale = 2.45
+fixed_fps = 60
+trail_lifetime = 1.74
+trail_sections = 88
+trail_section_subdivisions = 54
+process_material = SubResource("ParticleProcessMaterial_wc67q")

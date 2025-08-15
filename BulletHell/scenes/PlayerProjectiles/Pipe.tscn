@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://lfsrfwj686m8"]
+
+[ext_resource type="Script" uid="uid://cqko35fcqdnx4" path="res://BulletHell/scripts/SceneScripts/PlayerProjectiles/Pipe.cs" id="1_lnyqu"]
+[ext_resource type="Texture2D" uid="uid://dwdvc2kscyauv" path="res://BulletHell/assets/Pipe.png" id="2_xt4c7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p6d41"]
+radius = 16.0
+height = 56.0
+
+[node name="Pipe" type="Area2D"]
+collision_layer = 2
+collision_mask = 12
+script = ExtResource("1_lnyqu")
+ExplosionRadius = 150.0
+BaseSpeed = 400.0
+Multiplier = 1.5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+use_parent_material = true
+rotation = 2.19911
+scale = Vector2(0.43, 0.43)
+texture = ExtResource("2_xt4c7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_p6d41")
+
+[node name="ExplosionNode" type="Node2D" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

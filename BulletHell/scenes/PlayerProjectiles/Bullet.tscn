@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bi2pobt5bevh3"]
+
+[ext_resource type="Script" uid="uid://cr64majj1ubsw" path="res://BulletHell/scripts/SceneScripts/PlayerProjectiles/Bullet.cs" id="1_7stme"]
+[ext_resource type="Texture2D" uid="uid://b428io6cqtm7x" path="res://BulletHell/assets/bullet .png" id="2_oyy0v"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m5rae"]
+radius = 16.5529
+
+[node name="Projectile" type="Area2D"]
+collision_layer = 6
+collision_mask = 12
+script = ExtResource("1_7stme")
+BaseSpeed = 500.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+use_parent_material = true
+scale = Vector2(0.168889, 0.168889)
+texture = ExtResource("2_oyy0v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_m5rae")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

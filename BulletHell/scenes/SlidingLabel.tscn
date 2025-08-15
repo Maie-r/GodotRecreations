@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bg1r8gdbh1jxi"]
+
+[ext_resource type="Shader" uid="uid://we86lvvh6kg" path="res://BulletHell/scripts/SceneScripts/SlidingLabel.gdshader" id="1_04gcf"]
+[ext_resource type="Script" uid="uid://xqt636j88doo" path="res://BulletHell/scripts/SceneScripts/SlidingLabel.cs" id="1_bfvt5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_04gcf"]
+shader = ExtResource("1_04gcf")
+shader_parameter/Alpha = 1.0
+
+[node name="SlidingLabel" type="Node2D"]
+z_index = 2
+material = SubResource("ShaderMaterial_04gcf")
+script = ExtResource("1_bfvt5")
+
+[node name="Label" type="Label" parent="."]
+use_parent_material = true
+offset_left = 3.0
+offset_right = 148.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 25
+text = "SlidingLabel"

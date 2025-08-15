@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwc1y6m7gn4ir"]
+
+[ext_resource type="Texture2D" uid="uid://fbioxwjofcrw" path="res://BulletHell/assets/Loose.png" id="1_2lnr5"]
+[ext_resource type="Script" uid="uid://rbmi5djogvl5" path="res://BulletHell/scripts/SceneScripts/PlayerWeapons/Loose.cs" id="1_jbp5w"]
+
+[node name="Loose" type="Node2D"]
+use_parent_material = true
+script = ExtResource("1_jbp5w")
+
+[node name="Sprites" type="Node2D" parent="."]
+use_parent_material = true
+
+[node name="Sprite" type="Sprite2D" parent="Sprites"]
+use_parent_material = true
+position = Vector2(429, -58)
+texture = ExtResource("1_2lnr5")

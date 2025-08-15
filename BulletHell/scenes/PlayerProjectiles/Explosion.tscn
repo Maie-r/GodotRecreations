@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://grrcd8s3hmkw"]
+
+[ext_resource type="Script" uid="uid://dvulbis745hym" path="res://BulletHell/scripts/SceneScripts/PlayerProjectiles/Explosion.cs" id="1_y0f8g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vl5yh"]
+radius = 150.0
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_y0f8g")
+BaseSpeed = 0.0
+Multiplier = 0.8
+Angle = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Hitbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vl5yh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

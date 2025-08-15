@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://7po6imixjpne"]
+
+[ext_resource type="Script" uid="uid://d0go5jm53d8if" path="res://GamePicker.cs" id="1_r0myr"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Menu" type="CanvasLayer" parent="."]
+script = ExtResource("1_r0myr")
+AutoStart = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Menu"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BulletHell" type="Button" parent="Menu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "Bullet Hell"
+
+[connection signal="pressed" from="Menu/VBoxContainer/BulletHell" to="Menu" method="_on_bullet_hell_pressed"]

@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlkftrgmwfxrg"]
+
+[ext_resource type="Texture2D" uid="uid://cxoje5y0iquq0" path="res://BulletHell/assets/Ball.png" id="1_60xcx"]
+[ext_resource type="Script" uid="uid://mncmn2a1qweu" path="res://BulletHell/scripts/SceneScripts/PlayerProjectiles/CannonBall.cs" id="1_t148l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t148l"]
+radius = 26.4764
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 2
+collision_mask = 12
+script = ExtResource("1_t148l")
+ExplosionRadius = 300.0
+BaseSpeed = 600.0
+Multiplier = 0.4
+ConstantRotation = 0.3
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-5.96046e-08, -5)
+scale = Vector2(0.43, 0.43)
+texture = ExtResource("1_60xcx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_t148l")
+
+[node name="ExplosionNode" type="Node2D" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

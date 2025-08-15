@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://8vti0a3hbb1c"]
+
+[ext_resource type="Script" uid="uid://ckh2ei24wb77o" path="res://BulletHell/scripts/SceneScripts/PlayerWeapons/Gun.cs" id="1_3ddpp"]
+[ext_resource type="Texture2D" uid="uid://dnprcfe6v5fcl" path="res://BulletHell/assets/deagle.png" id="2_rrjtd"]
+
+[node name="Gun" type="Node2D"]
+use_parent_material = true
+script = ExtResource("1_3ddpp")
+BaseFireCoolDown = 0.3
+
+[node name="Sprites" type="Node2D" parent="."]
+use_parent_material = true
+
+[node name="SpriteGun" type="Sprite2D" parent="Sprites"]
+use_parent_material = true
+position = Vector2(141, -49)
+texture = ExtResource("2_rrjtd")

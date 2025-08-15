@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://tlsm0cw8e3c4"]
+
+[ext_resource type="Script" uid="uid://dsx5vhomvdgp4" path="res://BulletHell/scripts/SceneScripts/Player.cs" id="1_1q7sy"]
+[ext_resource type="Texture2D" uid="uid://bslioyx2334wb" path="res://BulletHell/assets/demolaugh.png" id="2_7gm05"]
+[ext_resource type="PackedScene" uid="uid://8vti0a3hbb1c" path="res://BulletHell/scenes/PlayerWeapons/Gun.tscn" id="3_fy0yw"]
+[ext_resource type="PackedScene" uid="uid://dgtmnyyvs6v1h" path="res://BulletHell/scenes/PlayerWeapons/Triple_Gun.tscn" id="4_b0ca2"]
+[ext_resource type="PackedScene" uid="uid://cssnrtoofjyku" path="res://BulletHell/scenes/PlayerWeapons/Stock.tscn" id="5_gwycf"]
+[ext_resource type="PackedScene" uid="uid://vcq1h0vgxkbl" path="res://BulletHell/scenes/PlayerWeapons/Shotgun.tscn" id="6_p1bj6"]
+[ext_resource type="PackedScene" uid="uid://b5cc7dm3e6l45" path="res://BulletHell/scenes/PlayerWeapons/Locken.tscn" id="7_m73gk"]
+[ext_resource type="PackedScene" uid="uid://dwc1y6m7gn4ir" path="res://BulletHell/scenes/PlayerWeapons/Loose.tscn" id="8_n4cnt"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1e0f1"]
+radius = 28.0
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+collision_layer = 2
+collision_mask = 33
+script = ExtResource("1_1q7sy")
+
+[node name="Sprites" type="Node2D" parent="."]
+
+[node name="Demo" type="Sprite2D" parent="Sprites"]
+use_parent_material = true
+position = Vector2(8, -1)
+rotation = -1.5708
+scale = Vector2(0.162671, 0.162671)
+texture = ExtResource("2_7gm05")
+
+[node name="Weapons" type="Node2D" parent="."]
+position = Vector2(-11.75, -35.97)
+rotation = -1.5708
+scale = Vector2(0.095, 0.095)
+
+[node name="Gun" parent="Weapons" instance=ExtResource("3_fy0yw")]
+
+[node name="TripleGun" parent="Weapons" instance=ExtResource("4_b0ca2")]
+visible = false
+StartActive = false
+
+[node name="Stock" parent="Weapons" instance=ExtResource("5_gwycf")]
+visible = false
+StartActive = false
+
+[node name="Shotgun" parent="Weapons" instance=ExtResource("6_p1bj6")]
+visible = false
+scale = Vector2(1.06, 1.06)
+StartActive = false
+
+[node name="Locken" parent="Weapons" instance=ExtResource("7_m73gk")]
+visible = false
+StartActive = false
+BaseFireCoolDown = 1.4
+
+[node name="Loose" parent="Weapons" instance=ExtResource("8_n4cnt")]
+visible = false
+StartActive = false
+
+[node name="hurtbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_1e0f1")
+
+[node name="BulletStartPos" type="Marker2D" parent="."]
+position = Vector2(-23, -74)
+
+[node name="Sfx" type="AudioStreamPlayer2D" parent="."]
+volume_db = -10.0

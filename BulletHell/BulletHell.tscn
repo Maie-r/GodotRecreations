@@ -1,0 +1,126 @@
+[gd_scene load_steps=14 format=3 uid="uid://brs3qlk2gi5fa"]
+
+[ext_resource type="Script" uid="uid://hc15ffkvgk1m" path="res://BulletHell/BulletHell.cs" id="1_wjn3x"]
+[ext_resource type="Texture2D" uid="uid://c74rxurs2oxej" path="res://BulletHell/assets/114.jpg" id="1_yy2x2"]
+[ext_resource type="PackedScene" uid="uid://c2ogge6r5eejm" path="res://BulletHell/scenes/crit_effect.tscn" id="3_d8pmg"]
+[ext_resource type="PackedScene" uid="uid://dag68aukhwh6o" path="res://BulletHell/scenes/RoamingProjectile.tscn" id="3_x123w"]
+[ext_resource type="PackedScene" uid="uid://tlsm0cw8e3c4" path="res://BulletHell/scenes/Player.tscn" id="4_2iobd"]
+[ext_resource type="PackedScene" uid="uid://q24wtae3og6f" path="res://BulletHell/scenes/ExplosionEffect.tscn" id="4_7ed87"]
+[ext_resource type="PackedScene" uid="uid://b7pan2k6nj7rj" path="res://BulletHell/scenes/PlayerInfo.tscn" id="5_sug6t"]
+[ext_resource type="PackedScene" uid="uid://cthxmqm7vllqn" path="res://BulletHell/scenes/UI.tscn" id="6_hhn11"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g5ywo"]
+size = Vector2(1165.5, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2t1tj"]
+size = Vector2(8, 660.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gdag2"]
+size = Vector2(1160, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sduvj"]
+size = Vector2(3674, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4tvvk"]
+size = Vector2(76, 1686.38)
+
+[node name="BulletHell" type="Node2D"]
+script = ExtResource("1_wjn3x")
+
+[node name="Bg" type="Sprite2D" parent="."]
+scale = Vector2(0.439062, 0.439063)
+texture = ExtResource("1_yy2x2")
+metadata/_edit_lock_ = true
+
+[node name="CritEffect" parent="." instance=ExtResource("3_d8pmg")]
+position = Vector2(-1265, -342)
+
+[node name="Explosion" parent="." instance=ExtResource("4_7ed87")]
+position = Vector2(-1270, -193)
+
+[node name="Borders" type="Node2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Borders"]
+collision_mask = 6
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Borders/StaticBody2D"]
+position = Vector2(-4, -333)
+shape = SubResource("RectangleShape2D_g5ywo")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Borders/StaticBody2D"]
+position = Vector2(580, -2)
+shape = SubResource("RectangleShape2D_2t1tj")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/StaticBody2D"]
+position = Vector2(-581, 5.75)
+shape = SubResource("RectangleShape2D_2t1tj")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Borders/StaticBody2D"]
+position = Vector2(3, 333)
+shape = SubResource("RectangleShape2D_gdag2")
+metadata/_edit_lock_ = true
+
+[node name="BulletDisposer" type="Area2D" parent="Borders"]
+collision_layer = 9
+collision_mask = 6
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="Borders/BulletDisposer"]
+position = Vector2(14, 645)
+shape = SubResource("RectangleShape2D_sduvj")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="Borders/BulletDisposer"]
+position = Vector2(1, -1056)
+shape = SubResource("RectangleShape2D_sduvj")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="Borders/BulletDisposer"]
+position = Vector2(1422, -200.188)
+shape = SubResource("RectangleShape2D_4tvvk")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="Borders/BulletDisposer"]
+position = Vector2(-1519, -217)
+shape = SubResource("RectangleShape2D_4tvvk")
+
+[node name="Player" parent="." groups=["UI"] instance=ExtResource("4_2iobd")]
+position = Vector2(0, 260)
+Godmode = true
+AllWeapons = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="UI" parent="." instance=ExtResource("6_hhn11")]
+
+[node name="PlayerInfo" parent="." instance=ExtResource("5_sug6t")]
+visible = false
+
+[node name="Spawnables" type="Node2D" parent="."]
+
+[node name="RoamingProjectiles" type="Node2D" parent="Spawnables"]
+
+[node name="RoamingProjectile" parent="Spawnables/RoamingProjectiles" instance=ExtResource("3_x123w")]
+visible = false
+position = Vector2(-682, -304)
+
+[node name="RoamingProjectileTimer" type="Timer" parent="Spawnables/RoamingProjectiles"]
+wait_time = 0.4
+autostart = true
+
+[node name="Projectiles" type="Node2D" parent="Spawnables"]
+
+[node name="Powerups" type="Node2D" parent="Spawnables"]
+
+[node name="PowerupTimer" type="Timer" parent="Spawnables/Powerups"]
+wait_time = 10.0
+autostart = true
+
+[connection signal="OnDeath" from="Player" to="." method="_on_player_on_death"]
+[connection signal="OnHit" from="Player" to="." method="_on_player_on_hit"]
+[connection signal="OnShoot" from="Player" to="." method="_on_player_on_shoot"]
+[connection signal="Restart" from="UI" to="." method="_on_ui_restart"]
+[connection signal="timeout" from="Spawnables/RoamingProjectiles/RoamingProjectileTimer" to="." method="_on_roaming_projectile_timer_timeout"]
+[connection signal="timeout" from="Spawnables/Powerups/PowerupTimer" to="." method="_on_powerup_timer_timeout"]

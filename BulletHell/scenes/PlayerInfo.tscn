@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://b7pan2k6nj7rj"]
+
+[ext_resource type="Script" uid="uid://353845cawkmd" path="res://BulletHell/scripts/SceneScripts/PlayerInfo.cs" id="1_hvbpj"]
+
+[node name="PlayerInfo" type="CanvasLayer"]
+script = ExtResource("1_hvbpj")
+
+[node name="TextureRect" type="ColorRect" parent="."]
+offset_right = 139.0
+offset_bottom = 127.0
+color = Color(0.435294, 0.435294, 0.435294, 0.407843)
+
+[node name="Labels" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Health" type="Label" parent="Labels"]
+layout_mode = 2
+text = "Health:"
+
+[node name="Damage" type="Label" parent="Labels"]
+layout_mode = 2
+text = "Damage: "
+
+[node name="FireRate" type="Label" parent="Labels"]
+layout_mode = 2
+text = "FireRate: "
+
+[node name="Speed" type="Label" parent="Labels"]
+layout_mode = 2
+text = "Speed: "

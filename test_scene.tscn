@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bb466gx8h17ph"]
+
+[ext_resource type="Script" uid="uid://606xjfhhlyvx" path="res://test_many_vectors.gd" id="1_iwypk"]
+[ext_resource type="Script" uid="uid://bnk3iijt17u72" path="res://test_dynamic_updates.gd" id="2_pb2qa"]
+
+[node name="TestScene" type="Node2D"]
+
+[node name="ManyVectors" type="Node" parent="."]
+script = ExtResource("1_iwypk")
+vector_l = Vector2(1, -41)
+
+[node name="DynamicUpdates" type="Node" parent="."]
+script = ExtResource("2_pb2qa")

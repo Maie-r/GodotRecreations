@@ -1,0 +1,63 @@
+[gd_scene load_steps=8 format=3 uid="uid://q24wtae3og6f"]
+
+[sub_resource type="Curve" id="Curve_r152o"]
+_limits = [-360.0, 360.0, 0.0, 1.0]
+_data = [Vector2(0, -360), 0.0, 0.0, 0, 0, Vector2(0.995074, 335.73), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_7j2wb"]
+curve = SubResource("Curve_r152o")
+
+[sub_resource type="Curve" id="Curve_x3iy1"]
+_limits = [-472.11, 20.0, 0.0, 1.0]
+_data = [Vector2(0, 2.24719), 0.0, 23.0, 0, 0, Vector2(1, -184.585), -141.885, 23.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_rwymr"]
+curve = SubResource("Curve_x3iy1")
+
+[sub_resource type="Curve" id="Curve_p1n05"]
+_limits = [-200.0, 200.0, 0.0, 1.0]
+_data = [Vector2(0.00492612, -173.034), 0.0, 0.0, 0, 0, Vector2(1, 182.022), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_lje0y"]
+curve = SubResource("Curve_p1n05")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_r152o"]
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(5, 5, 1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = 50.0
+angle_max = 50.0
+angle_curve = SubResource("CurveTexture_7j2wb")
+spread = 180.0
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 100.0
+radial_accel_max = 100.0
+radial_accel_curve = SubResource("CurveTexture_rwymr")
+tangential_accel_min = 10.0
+tangential_accel_max = 10.0
+tangential_accel_curve = SubResource("CurveTexture_lje0y")
+scale_min = 7.0
+scale_max = 10.0
+scale_over_velocity_min = 2.0
+scale_over_velocity_max = 2.0
+color = Color(1, 0, 0, 1)
+hue_variation_max = 0.15
+
+[node name="Explosion" type="GPUParticles2D"]
+emitting = false
+amount = 100
+lifetime = 2.0
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+randomness = 1.0
+fixed_fps = 60
+trail_enabled = true
+trail_lifetime = 0.4
+process_material = SubResource("ParticleProcessMaterial_r152o")

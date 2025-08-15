@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://vcq1h0vgxkbl"]
+
+[ext_resource type="Texture2D" uid="uid://chq1gcdic3mok" path="res://BulletHell/assets/Shotgrun.png" id="1_6kqr5"]
+[ext_resource type="Script" uid="uid://82ua13nbhb26" path="res://BulletHell/scripts/SceneScripts/PlayerWeapons/Shotgun.cs" id="1_76wvo"]
+
+[node name="Shotgun" type="Node2D"]
+use_parent_material = true
+script = ExtResource("1_76wvo")
+BulletCount = 15.0
+SpreadAngle = 60.0
+BaseFireCoolDown = 0.8
+
+[node name="Sprites" type="Node2D" parent="."]
+use_parent_material = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprites"]
+use_parent_material = true
+position = Vector2(209, -26)
+rotation = -0.380482
+scale = Vector2(2.725, 2.725)
+texture = ExtResource("1_6kqr5")
+flip_h = true
