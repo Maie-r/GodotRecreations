@@ -87,7 +87,7 @@ position = Vector2(-1519, -217)
 shape = SubResource("RectangleShape2D_4tvvk")
 
 [node name="Player" parent="." groups=["UI"] instance=ExtResource("4_2iobd")]
-position = Vector2(0, 260)
+position = Vector2(-2, 259)
 Godmode = true
 AllWeapons = true
 
