@@ -25,8 +25,28 @@ public partial class Madeline : CharacterBody2D
 
     public override void _Process(double delta)
     {
-
+       /*
+       if (OnGround)
+          SetState(States.Grounded)
+       
+       */
     }
+}
+
+// STATES
+public partial class Madeline : CharacterBody2D
+{
+   public enum States{
+      Falling,
+      Grounded
+   };
+
+   public bool ChangeState(State s)
+   {
+      if (CurrentState == s) return;
+      CurrentState = s;
+      s.OnSet();
+   }
 }
 
 // SETUPS
